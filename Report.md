@@ -35,6 +35,8 @@ The model consists of 2 neural networks - actor and critic.
 - Beta - `0.01`
 
 ## Plot of Rewards
+Environment solved in 134 episodes!	Average Score: 30.02  
+![image](https://user-images.githubusercontent.com/65574771/211800714-d3cc6d1b-ec37-475b-87ff-63a4538ec6be.png)
 
 ## Ideas for Future Work
 In the future id like to compare the PPO algorithms preformance to others like DDPG or A3C. 
