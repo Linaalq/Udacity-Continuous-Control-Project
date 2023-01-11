@@ -29,6 +29,8 @@ The barrier for solving the second version of the environment is slightly differ
 The environment is considered solved, when the average (over 100 episodes) of those average scores is at least +30. 
 
 ## The Environment
+For this project, the training was done in the second version of the environment wich contains 20 identical agents, each with its own copy of the environment.
+
 Follow the instructions below to explore the environment on your own machine! You will also learn how to use the Python API to control your agent.  
 ### Step 1: Activate the Environment  
 If you haven't already, please follow the instructions in the [DRLND GitHub repository](https://github.com/udacity/deep-reinforcement-learning#dependencies) to set up your Python environment. These instructions can be found in `README.md` at the root of the repository. By following these instructions, you will install PyTorch, the ML-Agents toolkit, and a few more Python packages required to complete the project.  
