@@ -1,18 +1,20 @@
 # Project report
+
+In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible.
+
+The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
+
+For this project, the training was done in the second version of the environment wich contains 20 identical agents, each with its own copy of the environment.
+
 ## Learning algorithm
-The learning algorithm used to train the agents is Proximal Policy Optimization (PPO) modified for continous action space. The input to the neural network model is observation vector (33 real numbers). The model consists of 2 seperate neural networks - actor and critic.
+In order to solve the environment I implemented a PPO agent according to the Proximal Policy Optimization Algorithms paper.
 
-The actor network takes observation as an input and outputs actions. Due to the tanh activation function on the output layer there is no need to scale or clip actions to fit -1, 1 range.
-The critic network is used to compute advantage returns which requires state value estimation. It outputs 1 real number - state value estimate for the given state.
-
-Action probabilites are taken from the normal distribution.
+PPO is an actor critic model. The idea behind it, is that we limit how far we can change our policy in each iteration through the KL-divergence, where the KL-divergence measures the difference between two data distributions p and q which are our old and new policies.
 
 ## Parameters and hyperparameters
 ### Neural networks
-The actor network directly outputs action which agent will take and use without any additional clipping, normalizing or preprocession. That's why it outputs 4 values - size of the action space.
-The critic network is not directly needed for the PPO algorithm (original paper describes policy network and surrogate function which counts ration of new action probabilites to old ones - actor would suffice) but it's very helpful to compute advantages which requires value for state.
 
-The hidden size parameters was choosen after careful tuning. I started from 64 nodes and after every increase agent took less episodes to converge (while also needed more computing power).
+The model consists of 2 neural networks - actor and critic.
 
 #### Actor network
 - 3 fully connected layers
@@ -29,3 +31,11 @@ The hidden size parameters was choosen after careful tuning. I started from 64 n
 - Tau - `0.95`
 - Gradient clip - `0.2`
 - Learning rate - `3e-4`
+- Epsilon - `0.1`
+- Beta - `0.01`
+
+## Plot of Rewards
+
+## Ideas for Future Work
+In the future id like to compare the PPO algorithms preformance to others like DDPG or A3C. 
+Id also like to experiment with a bigger network and more tuning to the hyperparameters to achive better results.
